@@ -1,0 +1,81 @@
+@mixin breakpoint($size){
+	@if($size == 'xl')	{
+		@media(min-width: 1200px){
+			@content
+		}
+	}
+	@else if($size == 'lg'){
+		@media(min-width: 992px) and (max-width: 1199px){
+			@content
+		}
+	}
+	@else if($size == 'md'){
+		@media(min-width: 768px) and (max-width: 991px){
+			@content
+		}
+	}
+	@else if($size == 'sm'){
+		@media(max-width: 767px){
+			@content
+		}
+	}
+}
+
+.carousel-indicators li{
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+}
+
+#nav-border{
+	position: fixed;
+	z-index: 2;
+	border-radius: 48px;
+	background: linear-gradient(to right, #CC490E 0%, #DA6632 49.48%, #F98B5F 100%);
+	top: calc(2rem - 2px);
+	height: 80px;
+	padding: 0 16px !important;
+	margin-left: -2px !important;
+
+	@include breakpoint('xl'){
+		max-width: 1144px !important;
+	}
+	@include breakpoint('lg'){
+		max-width: 964px !important;
+	}
+	@include breakpoint('md'){
+		max-width: 724px !important;
+	}
+	@include breakpoint('sm'){
+		max-width: 544px !important;
+	}
+}
+
+#menu{
+	position: fixed;
+	z-index: 3;
+	border-radius: 38px;
+	background-color: #fff;
+	top: 2rem;
+	padding: 0 !important;
+	height: 76px;
+
+	.navbar-nav{
+		display: flex;
+		justify-content: space-around;
+		width: 100%
+	}
+
+	.nav-link{
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+		text-transform: uppercase;
+		color: #DA6632;
+		opacity: .8;
+		transition: opacity .25s;
+		&:hover{
+			opacity: 1;
+		}
+	}
+
+}
