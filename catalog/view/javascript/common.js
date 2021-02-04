@@ -23,6 +23,34 @@ function getURLVar(key) {
 }
 
 $(document).ready(function() {
+
+	$('.CPF').mask('000.000.000-00')
+	
+	var SPMaskBehavior = function (val) {
+	     return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+	},
+	spOptions = {
+	    onKeyPress: function(val, e, field, options) {
+	        field.mask(SPMaskBehavior.apply({}, arguments), options);
+	    }
+	};
+
+	$('#input-telephone').mask(SPMaskBehavior, spOptions);
+
+	// $(".nav-link.dropdown-toggle").click(function(e){
+	// 	if($(window).width() > 768){
+	// 		if($(this).attr('aria-expanded') === 'false'){
+	// 			$("#dropdown-bg").css('visibility', 'visible')
+	// 			$("#dropdown-bg").css('opacity', '1')
+	// 		}else{
+	// 			$("#dropdown-bg").css('opacity', '0')
+	// 			setTimeout(function(){
+	// 				$("#dropdown-bg").css('visibility', 'hidden')
+	// 			},505)
+	// 		}
+	// 	}
+	// })
+
 	// Highlight any found errors
 	$('.text-danger').each(function() {
 		var element = $(this).parent().parent();
@@ -152,10 +180,11 @@ var cart = {
 			success: function(json) {
 				$('.alert-dismissible, .text-danger').remove();
 
-				if (json['redirect']) {
+				// if (json['redirect']) {
 					location = json['redirect'];
-				}
+				// }
 
+				/*
 				if (json['success']) {
 					$('#content').parent().before('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
@@ -168,6 +197,7 @@ var cart = {
 
 					$('#cart > ul').load('index.php?route=common/cart/info ul li');
 				}
+				*/
 			},
 			error: function(xhr, ajaxOptions, thrownError) {
 				alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -204,25 +234,26 @@ var cart = {
 		});
 	},
 	'remove': function(key) {
+		event.stopPropagation();
 		$.ajax({
 			url: 'index.php?route=checkout/cart/remove',
 			type: 'post',
 			data: 'key=' + key,
 			dataType: 'json',
 			beforeSend: function() {
-				$('#cart > button').button('loading');
+				// $('#cart > button').button('loading');
 			},
 			complete: function() {
-				$('#cart > button').button('reset');
+				// $('#cart > button').button('reset');
 			},
 			success: function(json) {
 				// Need to set timeout otherwise it wont update the total
-				setTimeout(function () {
-					$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
-				}, 100);
+				// setTimeout(function () {
+					// $('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
+				// }, 100);
 
-				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
-					location = 'index.php?route=checkout/cart';
+				if (location.pathname == '/carrinho') {
+					location.reload()
 				} else {
 					$('#cart > ul').load('index.php?route=common/cart/info ul li');
 				}

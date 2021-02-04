@@ -1,5 +1,9 @@
 @import url(//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,greek-ext,vietnamese);
 
+.bg-primary, .tile-primary, .btn-primary{
+    background: linear-gradient(to left bottom, #F98B5F, #CC490E) !important;
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -172,7 +176,7 @@ a:hover, a:focus {
     width: 235px;
     height: 100%;
     overflow: auto;
-    background-color: #242d37;
+    background-color: #111;
     position: absolute;
     top: 0px;
     left: -235px;
@@ -299,7 +303,7 @@ a:hover, a:focus {
 }
 
 #menu > li > ul {
-    background-color: #293141;
+    background-color: #181818;
 }
 
 /* 2nd lvl */
@@ -644,7 +648,7 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 #stats {
     border-radius: 2px;
     color: #808b9c;
-    background: #2e3a47;
+    background: rgba(0,0,0,.5);
     margin: 15px 20px;
     padding: 5px 0;
 }
@@ -954,4 +958,35 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 
 .opencart-icon-cart-mini:before {
     content: "\e91c";
+}
+
+.icon_picker_wrapper{
+    min-height: 200px;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-height: 250px;
+    overflow: auto;
+}
+
+.pickable{
+    width: calc(20% - 10px); 
+    height: 50px;
+    font-size: 24px;
+    display: flex;
+    margin: 5px;
+    box-shadow: 0 0 4px 4px #ccc;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(.9);
+    transition: .15s;
+    cursor: pointer;
+}
+
+.pickable:hover{
+    transform: scale(1);
 }

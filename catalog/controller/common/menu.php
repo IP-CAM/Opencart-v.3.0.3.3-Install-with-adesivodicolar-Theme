@@ -26,7 +26,8 @@ class ControllerCommonMenu extends Controller {
 					);
 
 					$children_data[] = array(
-						'name'  => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+						'name'  => $child['name'],
+						'icon'  => $child['icon'],
 						'href'  => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])
 					);
 				}
@@ -34,12 +35,19 @@ class ControllerCommonMenu extends Controller {
 				// Level 1
 				$data['categories'][] = array(
 					'name'     => $category['name'],
+					'name_upper'   => strtoupper($category['name']),
+					'metaname'     => str_replace(' - Adesivos Dicolar', '', $category['meta_title']),
 					'children' => $children_data,
 					'column'   => $category['column'] ? $category['column'] : 1,
 					'href'     => $this->url->link('product/category', 'path=' . $category['category_id'])
 				);
 			}
 		}
+
+		$data['url'] = strtoupper($_SERVER['REQUEST_URI']);
+		$data['cart'] = $this->load->controller('common/cart');
+		$data['logged'] = $this->customer->isLogged();
+		$data['logout'] = $this->url->link('account/logout', '', true);
 
 		return $this->load->view('common/menu', $data);
 	}

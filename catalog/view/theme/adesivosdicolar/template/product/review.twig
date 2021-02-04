@@ -8,7 +8,15 @@
   <tr>
     <td colspan="2"><p>{{ review.text }}</p>
       {% for i in 1..5 %}
-      {% if review.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> {% endif %}
+        {% if review.rating < i %} 
+          <span>
+            <i class="fas fa-star fa-2x" style="color: lightgray"></i>
+          </span> 
+        {% else %}
+          <span>
+            <i class="fas fa-star fa-2x" style="color: #FFD700"></i>
+          </span>
+        {% endif %}
       {% endfor %}
     </td>
   </tr>

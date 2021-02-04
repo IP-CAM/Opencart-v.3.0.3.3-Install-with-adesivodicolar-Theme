@@ -4,7 +4,7 @@ class ControllerProductProduct extends Controller {
 
 	public function index() {
 		$this->load->language('product/product');
-
+		
 		$data['breadcrumbs'] = array();
 
 		$data['breadcrumbs'][] = array(
@@ -19,53 +19,55 @@ class ControllerProductProduct extends Controller {
 
 			$parts = explode('_', (string)$this->request->get['path']);
 
-			$category_id = (int)array_pop($parts);
+			// $category_id = (int)array_pop($parts);
 
-			foreach ($parts as $path_id) {
-				if (!$path) {
-					$path = $path_id;
-				} else {
-					$path .= '_' . $path_id;
-				}
+			// foreach ($parts as $path_id) {
+			// 	if (!$path) {
+			// 		$path = $path_id;
+			// 	} else {
+			// 		$path .= '_' . $path_id;
+			// 	}
 
-				$category_info = $this->model_catalog_category->getCategory($path_id);
+			// 	$category_info = $this->model_catalog_category->getCategory($path_id);
 
-				if ($category_info) {
-					$data['breadcrumbs'][] = array(
-						'text' => $category_info['name'],
-						'href' => $this->url->link('product/category', 'path=' . $path)
-					);
-				}
-			}
+			// 	if ($category_info) {
+			// 		$data['breadcrumbs'][] = array(
+			// 			'text' => $category_info['name'],
+			// 			'href' => $this->url->link('product/category', 'path=' . $path)
+			// 		);
+			// 	}
+			// }
 
 			// Set the last category breadcrumb
-			$category_info = $this->model_catalog_category->getCategory($category_id);
+			// $category_info = $this->model_catalog_category->getCategory($category_id);
 
-			if ($category_info) {
-				$url = '';
+			// if ($category_info) {
+			// 	$url = '';
 
-				if (isset($this->request->get['sort'])) {
-					$url .= '&sort=' . $this->request->get['sort'];
-				}
+			// 	if (isset($this->request->get['sort'])) {
+			// 		$url .= '&sort=' . $this->request->get['sort'];
+			// 	}
 
-				if (isset($this->request->get['order'])) {
-					$url .= '&order=' . $this->request->get['order'];
-				}
+			// 	if (isset($this->request->get['order'])) {
+			// 		$url .= '&order=' . $this->request->get['order'];
+			// 	}
 
-				if (isset($this->request->get['page'])) {
-					$url .= '&page=' . $this->request->get['page'];
-				}
+			// 	if (isset($this->request->get['page'])) {
+			// 		$url .= '&page=' . $this->request->get['page'];
+			// 	}
 
-				if (isset($this->request->get['limit'])) {
-					$url .= '&limit=' . $this->request->get['limit'];
-				}
+			// 	if (isset($this->request->get['limit'])) {
+			// 		$url .= '&limit=' . $this->request->get['limit'];
+			// 	}
 
-				$data['breadcrumbs'][] = array(
-					'text' => $category_info['name'],
-					'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url)
-				);
-			}
+			// 	$data['breadcrumbs'][] = array(
+			// 		'text' => $category_info['name'],
+			// 		'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url)
+			// 	);
+			// }
 		}
+
+
 
 		$this->load->model('catalog/manufacturer');
 
@@ -155,8 +157,27 @@ class ControllerProductProduct extends Controller {
 		}
 
 		$this->load->model('catalog/product');
+		$this->load->model('catalog/category');
 
 		$product_info = $this->model_catalog_product->getProduct($product_id);
+		
+		$category = $this->model_catalog_product->getCategories($product_id);
+
+		if(isset($category[0])){
+			$product_sub_category = $this->model_catalog_category->getCategory((int)$this->model_catalog_product->getCategories($product_id)[0]['category_id']);
+			
+			$product_main_category = $this->model_catalog_category->getCategory($product_sub_category['parent_id']);
+
+			$data['breadcrumbs'][] = array(
+				'text' => $product_main_category['name'],
+				'href' => $this->url->link('product/category', 'path=' . $product_main_category['category_id'])
+			);
+
+			$data['breadcrumbs'][] = array(
+				'text' => $product_sub_category['name'],
+				'href' => $this->url->link('product/category', 'path=' . $product_sub_category['category_id'])
+			);
+		}
 
 		if ($product_info) {
 			$url = '';
@@ -244,6 +265,7 @@ class ControllerProductProduct extends Controller {
 			$data['reward'] = $product_info['reward'];
 			$data['points'] = $product_info['points'];
 			$data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
+
 
 			if ($product_info['quantity'] <= 0) {
 				$data['stock'] = $product_info['stock_status'];

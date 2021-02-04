@@ -132,6 +132,23 @@
                   <input type="hidden" name="image" value="{{ image }}" id="input-image" />
                 </div>
               </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label">ícone</label>
+                <div class="col-sm-10">
+                  <input type="text" name="category_icon" class="form-control">
+                  <div id="selected_icon">
+
+                  </div>
+                  <div id="icones">
+                      <input type="text" class="form-control mb-3" name="" placeholder="Pesquisar (em inglês)" id="search_icon">
+                      <div class="icon_picker_wrapper">
+                          
+                      </div>
+                  </div>
+                </div>
+              </div>
+
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-top"><span data-toggle="tooltip" title="{{ help_top }}">{{ entry_top }}</span></label>
                 <div class="col-sm-10">
@@ -307,4 +324,54 @@ $('#category-filter').delegate('.fa-minus-circle', 'click', function() {
 $('#language a:first').tab('show');
 //--></script>
 </div>
+
+<script type="text/javascript" src="/view/javascript/icomoon/icons.json"></script>
+<script type="text/javascript">
+
+  $(document).ready(function() {
+      if($('.icon_picker_wrapper i').length === 0){
+        const icons = JSON.parse(icomoon_icons)
+
+        icons.forEach(icon => {
+          $(".icon_picker_wrapper").append('<i class="'+icon+' d-none" id="icon'+icon+'" onclick="setIcon(\''+icon+'\')"></i>');
+          if(window.getComputedStyle(document.getElementById('icon'+icon),':before').content !== 'none'){
+              document.getElementById('icon'+icon).classList.remove('d-none')
+              document.getElementById('icon'+icon).classList.add('pickable')
+          }
+        })
+      }
+  });
+
+  $("#search_icon").keyup(function(){
+      const val = $(this).val();
+      var icon_class;
+      $.each($(".icon_picker_wrapper i"), function(){
+          if($(this).hasClass('pickable')){
+
+              icon_class = $(this).attr('class').split(/\s+/)[1];
+
+             if( (icon_class.match(new RegExp(".*" + val + ".*"))) === null){
+                  $(this).addClass('d-none')
+             }else{
+                  $(this).removeClass('d-none')
+             }
+          }
+      })
+  })
+
+  const serv_icon = $("#icone").val();
+  if(serv_icon !== ''){
+       $('#selected_icon').append('<i class="'+serv_icon+'"></i>')
+  }
+
+  function setIcon(icon) {
+      document.getElementById('icone_c').value = icon;
+      $('#selected_icon i').remove();
+      $('#selected_icon').append(`<i class="${icon} pickable mx-0"></i>`)
+      $("#search_icon").val('');
+      $("#search_icon").trigger('keyup');
+  }
+
+</script>
+
 {{ footer }}

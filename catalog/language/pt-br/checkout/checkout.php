@@ -4,6 +4,7 @@ $_['heading_title']                  = 'Finalizar pedido';
 
 // Text
 $_['text_cart']                      = 'Carrinho de compras';
+
 $_['text_checkout_option']           = 'Acesse sua conta';
 $_['text_checkout_account']          = 'Detalhes da sua conta';
 $_['text_checkout_payment_address']  = 'Endereço para fatura';
@@ -11,6 +12,15 @@ $_['text_checkout_shipping_address'] = 'Endereço para entrega';
 $_['text_checkout_shipping_method']  = 'Detalhes do frete';
 $_['text_checkout_payment_method']   = 'Detalhes do pagamento';
 $_['text_checkout_confirm']          = 'Resumo do pedido';
+
+// $_['text_checkout_option']           = '';
+// $_['text_checkout_account']          = '';
+// $_['text_checkout_payment_address']  = '';
+// $_['text_checkout_shipping_address'] = '';
+// $_['text_checkout_shipping_method']  = '';
+// $_['text_checkout_payment_method']   = '';
+// $_['text_checkout_confirm']          = '';
+
 $_['text_modify']                    = 'Modificar &raquo;';
 $_['text_new_customer']              = 'Ainda não é cliente?';
 $_['text_returning_customer']        = 'Já é cliente?';

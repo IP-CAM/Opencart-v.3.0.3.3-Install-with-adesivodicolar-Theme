@@ -7,8 +7,6 @@ class ControllerProductCategory extends Controller {
 
 		$this->load->model('catalog/product');
 
-		$this->load->model('tool/image');
-
 		if (isset($this->request->get['filter'])) {
 			$filter = $this->request->get['filter'];
 		} else {
@@ -65,6 +63,30 @@ class ControllerProductCategory extends Controller {
 
 			$parts = explode('_', (string)$this->request->get['path']);
 
+			$top_parent_category_id = (int)$parts[0];
+			$top_parent_category_id_info = $this->model_catalog_category->getCategory($top_parent_category_id);
+			$data['metaname'] = str_replace(' - Adesivos Dicolar', '', $top_parent_category_id_info['meta_title']);
+
+			$children_data = array();
+
+			$children = $this->model_catalog_category->getCategories($top_parent_category_id);
+
+			foreach ($children as $child) {
+				$filter_data = array(
+					'filter_category_id'  => $child['category_id'],
+					'filter_sub_category' => true
+				);
+
+				$children_data[] = array(
+					'name'  => $child['name'],
+					'icon'  => $child['icon'],
+					'href'  => $this->url->link('product/category', 'path=' . $top_parent_category_id_info['category_id'] . '_' . $child['category_id'])
+				);
+			}
+
+			$data['children'] = $children_data;
+			// var_dump($data['children']);  die();
+
 			$category_id = (int)array_pop($parts);
 
 			foreach ($parts as $path_id) {
@@ -78,7 +100,7 @@ class ControllerProductCategory extends Controller {
 
 				if ($category_info) {
 					$data['breadcrumbs'][] = array(
-						'text' => $category_info['name'],
+						'text' => str_replace(' - Adesivos Dicolar', '',$category_info['meta_title']),
 						'href' => $this->url->link('product/category', 'path=' . $path . $url)
 					);
 				}
@@ -100,10 +122,11 @@ class ControllerProductCategory extends Controller {
 
 			// Set the last category breadcrumb
 			$data['breadcrumbs'][] = array(
-				'text' => $category_info['name'],
+				'text' => str_replace(' - Adesivos Dicolar', '', $category_info['meta_title']),
 				'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'])
 			);
 
+			$this->load->model('tool/image');
 			if ($category_info['image']) {
 				$data['thumb'] = $this->model_tool_image->resize($category_info['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_category_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_category_height'));
 			} else {
@@ -143,6 +166,7 @@ class ControllerProductCategory extends Controller {
 
 				$data['categories'][] = array(
 					'name' => $result['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+					'category_id' => $result['category_id'],
 					'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'] . '_' . $result['category_id'] . $url)
 				);
 			}
@@ -206,6 +230,75 @@ class ControllerProductCategory extends Controller {
 					'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
 				);
 			}
+
+			if(count($data['categories']) > 0 && empty($data['products'])){
+				
+				$data['products'] = array();
+				foreach ($data['categories'] as $key => $category) {
+
+					$category_id = (int)$category['category_id'];
+
+					$filter_data = array(
+						'filter_category_id' => $category_id,
+						'filter_filter'      => $filter,
+						'sort'               => $sort,
+						'order'              => $order,
+						'start'              => ($page - 1) * $limit,
+						'limit'              => $limit
+					);
+
+					$product_total += $this->model_catalog_product->getTotalProducts($filter_data);
+
+					$results = $this->model_catalog_product->getProducts($filter_data);
+
+					foreach ($results as $result) {
+						if ($result['image']) {
+							$image = $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_height'));
+						} else {
+							$image = $this->model_tool_image->resize('placeholder.png', $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_height'));
+						}
+
+						if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
+							$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+						} else {
+							$price = false;
+						}
+
+						if ((float)$result['special']) {
+							$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+						} else {
+							$special = false;
+						}
+
+						if ($this->config->get('config_tax')) {
+							$tax = $this->currency->format((float)$result['special'] ? $result['special'] : $result['price'], $this->session->data['currency']);
+						} else {
+							$tax = false;
+						}
+
+						if ($this->config->get('config_review_status')) {
+							$rating = (int)$result['rating'];
+						} else {
+							$rating = false;
+						}
+
+						$data['products'][] = array(
+							'product_id'  => $result['product_id'],
+							'thumb'       => $image,
+							'name'        => $result['name'],
+							'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '..',
+							'price'       => $price,
+							'special'     => $special,
+							'tax'         => $tax,
+							'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
+							'rating'      => $rating,
+							'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
+						);
+					}
+				}
+			}
+
+			// var_dump($data['products']); die();
 
 			$url = '';
 
@@ -404,6 +497,8 @@ class ControllerProductCategory extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
+
+			$data['is_category'] = 'pepino';
 
 			$this->response->setOutput($this->load->view('error/not_found', $data));
 		}

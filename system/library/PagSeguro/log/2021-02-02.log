@@ -1,0 +1,109 @@
+<div data-level="100"><h1 style="background: #CCCCCC;color: #ffffff;padding: 5px;" class="monolog-output">DEBUG</h1><table cellspacing="1" width="100%" class="monolog-output table"><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Message:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">Gerando sessão para o usuário</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Time:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">2021-02-02T11:23:02</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Channel:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">security</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Context:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><table cellspacing="1" width="100%" class="table"><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">e-mail:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">sandobox@pagseguro.com.br</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">token:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">JIAHFISDHGSDHGSIDHGISDHGISDGSJD</pre></td>
+</tr></table></td>
+</tr></table></div><div data-level="600"><h1 style="background: #000000;color: #ffffff;padding: 5px;" class="monolog-output">EMERGENCY</h1><table cellspacing="1" width="100%" class="monolog-output table"><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Message:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">Credenciais inválidas</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Time:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">2021-02-02T11:23:08</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Channel:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">security</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Context:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><table cellspacing="1" width="100%" class="table"><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">e-mail:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">sandobox@pagseguro.com.br</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">token:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">JIAHFISDHGSDHGSIDHGISDHGISDGSJD</pre></td>
+</tr></table></td>
+</tr></table></div><div data-level="100"><h1 style="background: #CCCCCC;color: #ffffff;padding: 5px;" class="monolog-output">DEBUG</h1><table cellspacing="1" width="100%" class="monolog-output table"><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Message:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">Gerando sessão para o usuário</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Time:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">2021-02-02T12:01:21</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Channel:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">security</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Context:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><table cellspacing="1" width="100%" class="table"><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">e-mail:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">sandobox@pagseguro.com.br</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">token:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">JIAHFISDHGSDHGSIDHGISDHGISDGSJD</pre></td>
+</tr></table></td>
+</tr></table></div><div data-level="600"><h1 style="background: #000000;color: #ffffff;padding: 5px;" class="monolog-output">EMERGENCY</h1><table cellspacing="1" width="100%" class="monolog-output table"><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Message:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">Credenciais inválidas</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Time:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">2021-02-02T12:01:27</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Channel:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">security</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Context:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><table cellspacing="1" width="100%" class="table"><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">e-mail:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">sandobox@pagseguro.com.br</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">token:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">JIAHFISDHGSDHGSIDHGISDHGISDGSJD</pre></td>
+</tr></table></td>
+</tr></table></div><div data-level="100"><h1 style="background: #CCCCCC;color: #ffffff;padding: 5px;" class="monolog-output">DEBUG</h1><table cellspacing="1" width="100%" class="monolog-output table"><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Message:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">Gerando sessão para o usuário</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Time:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">2021-02-02T12:02:03</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Channel:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">security</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Context:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><table cellspacing="1" width="100%" class="table"><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">e-mail:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">sandobox@pagseguro.com.br</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">token:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">JIAHFISDHGSDHGSIDHGISDHGISDGSJD</pre></td>
+</tr></table></td>
+</tr></table></div><div data-level="600"><h1 style="background: #000000;color: #ffffff;padding: 5px;" class="monolog-output">EMERGENCY</h1><table cellspacing="1" width="100%" class="monolog-output table"><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Message:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">Credenciais inválidas</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Time:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">2021-02-02T12:02:10</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Channel:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">security</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">Context:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><table cellspacing="1" width="100%" class="table"><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">e-mail:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">sandobox@pagseguro.com.br</pre></td>
+</tr><tr style="padding: 4px;text-align: left;">
+<th style="vertical-align: top;background: #ccc;color: #000" width="100">token:</th>
+<td style="padding: 4px;text-align: left;vertical-align: top;background: #eee;color: #000"><pre style="white-space: pre-wrap;">JIAHFISDHGSDHGSIDHGISDHGISDGSJD</pre></td>
+</tr></table></td>
+</tr></table></div>

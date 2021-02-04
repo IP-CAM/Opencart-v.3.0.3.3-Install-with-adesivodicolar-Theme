@@ -1,6 +1,8 @@
 {% if categories %}
 
-  <div class="container">
+  <div id="dropdown-bg"></div> 
+
+  <div class="container px-0" id="menu-wrapper">
     <div id="nav-border" class="container"></div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light container" id="menu">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,24 +14,52 @@
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           {% for category in categories %}
-            {% if category.children %}
+           {#  {% if category.children %}
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"aria-expanded="false">
-                  Dropdown link
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown-category-{{category.name}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{ category.name }}
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  {% for child in children %}
-                    <a class="dropdown-item" href="{{ child.href }}">{{ child.name }}</a>
-                  {% endfor %}
+                <div class="dropdown-menu" aria-labelledby="dropdown-category-{{category.name}}">
+
+                <div class="row">
+                  <div class="col-2 d-none d-lg-flex align-items-center justify-content-center text-left category_name">
+                    <span>{{ category.metaname }}</span>
+                  </div>
+                  <div class="col-12 col-lg-10 col_all_categories">
+                    <div class="row">
+
+                      {% for children in category.children|batch(category.children|length / category.  column|round(1, 'ceil')) %}
+                        {% for child in children %}
+                          <div class="col-category_wrapper">
+                            <a class="dropdown-item d-flex flex-column align-items-center text-center category_wrapper" href="{{ child.href }}" data-toggle="tooltip" title="{{ child.name }}" data-delay='{"show":"1000", "hide":"0"}'>
+                              <div class="mb-3 mb-md-0"><i class="{{child.icon}}"></i></div>
+                              <span class="d-none d-md-inline-block">{{child.name}}</span>
+                            </a>
+                          </div>
+                        {% endfor %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+                
                 </div>
               </li>     
-            {% else %}
+            {% else %} #}
               <li class="nav-item"><a class="nav-link" href="{{ category.href }}">{{ category.name }}</a></li>
-            {% endif %}
+            {# {% endif %} #}
           {% endfor %}
+          <li class="nav-item d-flex">
+            <div id="cart_view_wrapper">{{ cart }}</div>
+            {% if logged %}
+              <a href="{{ logout }}" data-toggle="tooltip" title="Sair da sua conta"><i class="fas fa-power-off ml-2 text-danger pt-1"></i></a>
+            {% endif %}
+          </li>
         </ul>
+        <a href="#" class="text-white d-lg-none close" onclick="event.preventDefault(); $('.navbar-toggler').click()">&times;</a>
       </div>
     </nav>    
   </div>
 
 {% endif %}
+
+<script type="text/javascript"></script>
